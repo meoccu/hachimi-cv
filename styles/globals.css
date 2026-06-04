@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-brand-500: #4f46e5;
+  --color-brand-600: #4338ca;
+  --color-brand-700: #3730a3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei",
+    "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  @apply bg-gray-50 text-gray-900;
+}
+
+/* PDF 渲染用字体 */
+@font-face {
+  font-family: "Noto Sans SC";
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/NotoSansSC-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Noto Sans SC";
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/NotoSansSC-Bold.ttf") format("truetype");
+}
+
+/* ---------- 通用样式快捷类 ---------- */
+@layer components {
+  .input {
+    @apply w-full border border-gray-300 rounded px-3 py-2 text-sm
+      focus:outline-none focus:ring-2 focus:ring-brand-500/40 focus:border-brand-500;
+  }
+  .select {
+    @apply w-full bg-white border border-gray-300 rounded px-3 py-2 text-sm
+      focus:outline-none focus:ring-2 focus:ring-brand-500/40;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center px-3 py-2 rounded text-sm
+      bg-gray-100 hover:bg-gray-200 transition disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-3 py-2 rounded text-sm
+      bg-brand-600 text-white hover:bg-brand-700 transition disabled:opacity-50;
+  }
+  .btn-danger {
+    @apply inline-flex items-center justify-center px-3 py-2 rounded text-sm
+      bg-red-600 text-white hover:bg-red-700 transition disabled:opacity-50;
+  }
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 p-4;
+  }
+  .label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+}
+
+/* ---------- 简历预览（A4） ---------- */
+.resume-page {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  background: #fff;
+  padding: 18mm 16mm;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition text-sm disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded bg-brand-600 text-white hover:bg-brand-700 transition text-sm disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent;
+  }
+  .select {
+    @apply px-3 py-2 border border-gray-300 rounded text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-500;
+  }
+  .label {
+    @apply block text-xs font-medium text-gray-600 mb-1;
+  }
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-100 p-4;
+  }
+}
+
+/* 简历预览内禁止换行收缩 */
+.resume-page {
+  font-feature-settings: "kern";
+  word-break: break-word;
+}
+
+/* PDF 打印时隐藏 UI */
+@media print {
+  .no-print { display: none !important; }
+  .resume-page { box-shadow: none !important; }
+}

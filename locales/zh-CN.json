@@ -1,0 +1,86 @@
+{
+  "common": {
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "edit": "编辑",
+    "create": "新建",
+    "loading": "加载中…",
+    "search": "搜索",
+    "confirm": "确认",
+    "back": "返回",
+    "submit": "提交"
+  },
+  "auth": {
+    "login": "登录",
+    "register": "注册",
+    "logout": "退出",
+    "email": "邮箱",
+    "password": "密码",
+    "forgotPassword": "忘记密码？",
+    "noAccount": "还没有账号？",
+    "haveAccount": "已有账号？",
+    "loginWithGoogle": "使用 Google 登录",
+    "loginWithGithub": "使用 GitHub 登录",
+    "loginWithWechat": "使用微信登录"
+  },
+  "resume": {
+    "myResumes": "我的简历",
+    "newResume": "新建简历",
+    "untitled": "未命名简历",
+    "basicInfo": "基本信息",
+    "summary": "个人简介",
+    "experience": "工作经历",
+    "project": "项目经历",
+    "education": "教育经历",
+    "skills": "技能",
+    "language": "语言",
+    "certificate": "证书",
+    "exportPdf": "导出 PDF",
+    "share": "分享",
+    "preview": "预览",
+    "delete": "删除简历",
+    "savedAt": "已保存",
+    "saving": "保存中…",
+    "saveFailed": "保存失败"
+  },
+  "share": {
+    "public": "公开访问",
+    "password": "访问密码",
+    "expiresAt": "过期时间",
+    "watermark": "水印",
+    "copyLink": "复制链接",
+    "passwordRequired": "请输入密码",
+    "wrongPassword": "密码错误",
+    "expired": "该简历已过期"
+  },
+  "billing": {
+    "plans": "套餐",
+    "free": "免费版",
+    "pro": "专业版",
+    "enterprise": "企业版",
+    "upgrade": "升级",
+    "subscribe": "订阅",
+    "currentPlan": "当前套餐",
+    "expiresAt": "到期时间",
+    "orderHistory": "订单记录",
+    "payWithStripe": "信用卡支付",
+    "payWithWechat": "微信支付"
+  },
+  "ai": {
+    "polish": "润色",
+    "shorten": "缩短",
+    "expand": "扩写",
+    "translate": "翻译",
+    "running": "AI 处理中…",
+    "apply": "应用结果",
+    "quotaExceeded": "今日 AI 使用次数已用完"
+  },
+  "error": {
+    "networkError": "网络错误，请重试",
+    "unauthorized": "请先登录",
+    "forbidden": "无权限访问",
+    "notFound": "资源不存在",
+    "rateLimited": "请求过于频繁，请稍后再试"
+  }
+}

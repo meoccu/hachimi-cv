@@ -1,0 +1,86 @@
+{
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "loading": "Loading…",
+    "search": "Search",
+    "confirm": "Confirm",
+    "back": "Back",
+    "submit": "Submit"
+  },
+  "auth": {
+    "login": "Sign in",
+    "register": "Sign up",
+    "logout": "Sign out",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "loginWithGoogle": "Continue with Google",
+    "loginWithGithub": "Continue with GitHub",
+    "loginWithWechat": "Continue with WeChat"
+  },
+  "resume": {
+    "myResumes": "My Resumes",
+    "newResume": "New Resume",
+    "untitled": "Untitled Resume",
+    "basicInfo": "Basic Info",
+    "summary": "Summary",
+    "experience": "Experience",
+    "project": "Projects",
+    "education": "Education",
+    "skills": "Skills",
+    "language": "Languages",
+    "certificate": "Certificates",
+    "exportPdf": "Export PDF",
+    "share": "Share",
+    "preview": "Preview",
+    "delete": "Delete Resume",
+    "savedAt": "Saved",
+    "saving": "Saving…",
+    "saveFailed": "Save failed"
+  },
+  "share": {
+    "public": "Public",
+    "password": "Password",
+    "expiresAt": "Expires at",
+    "watermark": "Watermark",
+    "copyLink": "Copy Link",
+    "passwordRequired": "Password required",
+    "wrongPassword": "Wrong password",
+    "expired": "This resume has expired"
+  },
+  "billing": {
+    "plans": "Plans",
+    "free": "Free",
+    "pro": "Pro",
+    "enterprise": "Enterprise",
+    "upgrade": "Upgrade",
+    "subscribe": "Subscribe",
+    "currentPlan": "Current plan",
+    "expiresAt": "Expires at",
+    "orderHistory": "Order history",
+    "payWithStripe": "Pay with Card",
+    "payWithWechat": "Pay with WeChat"
+  },
+  "ai": {
+    "polish": "Polish",
+    "shorten": "Shorten",
+    "expand": "Expand",
+    "translate": "Translate",
+    "running": "AI processing…",
+    "apply": "Apply",
+    "quotaExceeded": "Daily AI quota exceeded"
+  },
+  "error": {
+    "networkError": "Network error, please retry",
+    "unauthorized": "Please sign in first",
+    "forbidden": "No permission",
+    "notFound": "Not found",
+    "rateLimited": "Too many requests, please slow down"
+  }
+}

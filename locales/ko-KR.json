@@ -1,0 +1,86 @@
+{
+  "common": {
+    "save": "저장",
+    "cancel": "취소",
+    "delete": "삭제",
+    "edit": "편집",
+    "create": "새로 만들기",
+    "loading": "로딩 중…",
+    "search": "검색",
+    "confirm": "확인",
+    "back": "뒤로",
+    "submit": "제출"
+  },
+  "auth": {
+    "login": "로그인",
+    "register": "회원가입",
+    "logout": "로그아웃",
+    "email": "이메일",
+    "password": "비밀번호",
+    "forgotPassword": "비밀번호를 잊으셨나요?",
+    "noAccount": "계정이 없으신가요?",
+    "haveAccount": "이미 계정이 있으신가요?",
+    "loginWithGoogle": "Google로 로그인",
+    "loginWithGithub": "GitHub로 로그인",
+    "loginWithWechat": "WeChat으로 로그인"
+  },
+  "resume": {
+    "myResumes": "내 이력서",
+    "newResume": "새 이력서",
+    "untitled": "제목 없는 이력서",
+    "basicInfo": "기본 정보",
+    "summary": "자기소개",
+    "experience": "경력",
+    "project": "프로젝트",
+    "education": "학력",
+    "skills": "기술",
+    "language": "언어",
+    "certificate": "자격증",
+    "exportPdf": "PDF 내보내기",
+    "share": "공유",
+    "preview": "미리보기",
+    "delete": "이력서 삭제",
+    "savedAt": "저장됨",
+    "saving": "저장 중…",
+    "saveFailed": "저장 실패"
+  },
+  "share": {
+    "public": "공개",
+    "password": "비밀번호",
+    "expiresAt": "만료일",
+    "watermark": "워터마크",
+    "copyLink": "링크 복사",
+    "passwordRequired": "비밀번호가 필요합니다",
+    "wrongPassword": "비밀번호가 틀렸습니다",
+    "expired": "만료된 이력서입니다"
+  },
+  "billing": {
+    "plans": "요금제",
+    "free": "무료",
+    "pro": "프로",
+    "enterprise": "엔터프라이즈",
+    "upgrade": "업그레이드",
+    "subscribe": "구독",
+    "currentPlan": "현재 요금제",
+    "expiresAt": "만료일",
+    "orderHistory": "주문 내역",
+    "payWithStripe": "카드 결제",
+    "payWithWechat": "WeChat Pay"
+  },
+  "ai": {
+    "polish": "다듬기",
+    "shorten": "줄이기",
+    "expand": "확장",
+    "translate": "번역",
+    "running": "AI 처리 중…",
+    "apply": "적용",
+    "quotaExceeded": "오늘 AI 사용량 초과"
+  },
+  "error": {
+    "networkError": "네트워크 오류",
+    "unauthorized": "로그인이 필요합니다",
+    "forbidden": "권한이 없습니다",
+    "notFound": "찾을 수 없습니다",
+    "rateLimited": "요청이 너무 많습니다"
+  }
+}

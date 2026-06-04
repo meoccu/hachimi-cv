@@ -1,0 +1,86 @@
+{
+  "common": {
+    "save": "保存",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "edit": "編集",
+    "create": "新規作成",
+    "loading": "読み込み中…",
+    "search": "検索",
+    "confirm": "確認",
+    "back": "戻る",
+    "submit": "送信"
+  },
+  "auth": {
+    "login": "ログイン",
+    "register": "新規登録",
+    "logout": "ログアウト",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "forgotPassword": "パスワードを忘れた？",
+    "noAccount": "アカウントをお持ちでない方",
+    "haveAccount": "既にアカウントをお持ちの方",
+    "loginWithGoogle": "Google でログイン",
+    "loginWithGithub": "GitHub でログイン",
+    "loginWithWechat": "WeChat でログイン"
+  },
+  "resume": {
+    "myResumes": "マイ履歴書",
+    "newResume": "履歴書を作成",
+    "untitled": "無題の履歴書",
+    "basicInfo": "基本情報",
+    "summary": "自己紹介",
+    "experience": "職務経歴",
+    "project": "プロジェクト",
+    "education": "学歴",
+    "skills": "スキル",
+    "language": "言語",
+    "certificate": "資格",
+    "exportPdf": "PDF を出力",
+    "share": "共有",
+    "preview": "プレビュー",
+    "delete": "履歴書を削除",
+    "savedAt": "保存済み",
+    "saving": "保存中…",
+    "saveFailed": "保存失敗"
+  },
+  "share": {
+    "public": "公開",
+    "password": "アクセスパスワード",
+    "expiresAt": "有効期限",
+    "watermark": "ウォーターマーク",
+    "copyLink": "リンクをコピー",
+    "passwordRequired": "パスワードを入力してください",
+    "wrongPassword": "パスワードが間違っています",
+    "expired": "この履歴書は期限切れです"
+  },
+  "billing": {
+    "plans": "プラン",
+    "free": "無料",
+    "pro": "プロ",
+    "enterprise": "エンタープライズ",
+    "upgrade": "アップグレード",
+    "subscribe": "購読する",
+    "currentPlan": "現在のプラン",
+    "expiresAt": "有効期限",
+    "orderHistory": "注文履歴",
+    "payWithStripe": "クレジットカード",
+    "payWithWechat": "WeChat Pay"
+  },
+  "ai": {
+    "polish": "推敲",
+    "shorten": "短縮",
+    "expand": "拡張",
+    "translate": "翻訳",
+    "running": "AI 処理中…",
+    "apply": "適用",
+    "quotaExceeded": "本日の AI 利用回数を超えました"
+  },
+  "error": {
+    "networkError": "ネットワークエラー",
+    "unauthorized": "ログインしてください",
+    "forbidden": "権限がありません",
+    "notFound": "見つかりません",
+    "rateLimited": "リクエストが多すぎます"
+  }
+}

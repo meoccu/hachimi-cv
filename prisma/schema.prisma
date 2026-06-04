@@ -1,0 +1,297 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Plan {
+  FREE
+  PRO
+  ENTERPRISE
+}
+
+enum UserStatus {
+  ACTIVE
+  DISABLED
+  PENDING
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+  CANCELED
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  CANCELED
+  EXPIRED
+  PAST_DUE
+}
+
+enum PaymentProvider {
+  STRIPE
+  WECHAT
+}
+
+model User {
+  id              String    @id @default(cuid())
+  email           String    @unique
+  emailVerifiedAt DateTime?
+  passwordHash    String?
+  name            String?
+  avatarUrl       String?
+  locale          String    @default("zh-CN")
+  plan            Plan      @default(FREE)
+  planExpiresAt   DateTime?
+  status          UserStatus @default(ACTIVE)
+  isAdmin         Boolean   @default(false)
+  inviteCodeId    String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  deletedAt       DateTime?
+
+  oauthAccounts   OAuthAccount[]
+  resumes         Resume[]
+  templates       Template[]
+  orders          Order[]
+  subscriptions   Subscription[]
+  emailTokens     EmailToken[]
+  pwdResetTokens  PasswordResetToken[]
+  aiLogs          AiUsageLog[]
+  inviteCode      InviteCode?    @relation(fields: [inviteCodeId], references: [id])
+
+  @@index([email])
+  @@index([plan])
+}
+
+model OAuthAccount {
+  id           String   @id @default(cuid())
+  userId       String
+  provider     String   // github | wechat
+  providerUid  String
+  accessToken  String?
+  refreshToken String?
+  expiresAt    DateTime?
+  raw          Json?
+  createdAt    DateTime @default(now())
+
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerUid])
+  @@index([userId])
+}
+
+model Resume {
+  id              String    @id @default(cuid())
+  userId          String
+  title           String    @default("我的简历")
+  slug            String    @unique
+  locale          String    @default("zh-CN")
+  templateId      String?
+  content         Json      // 简历完整内容 JSON
+  themeConfig     Json?     // 主题/颜色等
+  isPublic        Boolean   @default(false)
+  sharePassword   String?   // hashed
+  shareExpiresAt  DateTime?
+  shareMaxViews   Int?
+  shareViewCount  Int       @default(0)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  deletedAt       DateTime?
+
+  user            User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  template        Template?      @relation(fields: [templateId], references: [id])
+  versions        ResumeVersion[]
+  views           ResumeView[]
+  clicks          ResumeClick[]
+
+  @@index([userId])
+  @@index([slug])
+}
+
+model ResumeVersion {
+  id          String   @id @default(cuid())
+  resumeId    String
+  versionNo   Int
+  content     Json
+  message     String?
+  createdAt   DateTime @default(now())
+  createdBy   String?
+
+  resume      Resume   @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+
+  @@unique([resumeId, versionNo])
+  @@index([resumeId])
+}
+
+model ResumeView {
+  id         String   @id @default(cuid())
+  resumeId   String
+  viewerIp   String?
+  uaHash     String?
+  referer    String?
+  device     String?
+  browser    String?
+  country    String?
+  city       String?
+  createdAt  DateTime @default(now())
+
+  resume     Resume   @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+
+  @@index([resumeId, createdAt])
+}
+
+model ResumeClick {
+  id         String   @id @default(cuid())
+  resumeId   String
+  clickType  String   // email | phone | link
+  target     String?
+  createdAt  DateTime @default(now())
+
+  resume     Resume   @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+
+  @@index([resumeId, clickType])
+}
+
+model Template {
+  id           String   @id @default(cuid())
+  ownerId      String?
+  name         String
+  description  String?
+  thumbnail    String?
+  html         String   // 安全 HTML 模板
+  css          String   // 安全 CSS
+  variables    Json?    // 允许变量列表
+  locale       String   @default("zh-CN")
+  isOfficial   Boolean  @default(false)
+  isPremium    Boolean  @default(false)
+  isPublic     Boolean  @default(true)
+  status       String   @default("ACTIVE")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  deletedAt    DateTime?
+
+  owner        User?    @relation(fields: [ownerId], references: [id])
+  resumes      Resume[]
+
+  @@index([ownerId])
+}
+
+model InviteCode {
+  id          String    @id @default(cuid())
+  code        String    @unique
+  maxUses     Int       @default(1)
+  uses        Int       @default(0)
+  expiresAt   DateTime?
+  createdAt   DateTime  @default(now())
+
+  users       User[]
+}
+
+model Order {
+  id              String         @id @default(cuid())
+  userId          String
+  outTradeNo      String         @unique
+  provider        PaymentProvider
+  amount          Int            // 单位：分
+  currency        String         @default("CNY")
+  plan            Plan
+  periodMonths    Int            @default(1)
+  status          OrderStatus    @default(PENDING)
+  providerPayId   String?
+  rawNotify       Json?
+  paidAt          DateTime?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  user            User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+}
+
+model Subscription {
+  id              String             @id @default(cuid())
+  userId          String
+  plan            Plan
+  status          SubscriptionStatus @default(ACTIVE)
+  provider        PaymentProvider
+  providerSubId   String?
+  startAt         DateTime           @default(now())
+  expiresAt       DateTime
+  cancelAt        DateTime?
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+
+  user            User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model SiteConfig {
+  id              String   @id @default("default")
+  siteName        String   @default("Resume Platform")
+  siteUrl         String   @default("https://example.com")
+  locale          String   @default("zh-CN")
+  logoUrl         String?
+  smtpHost        String?
+  smtpPort        Int?
+  smtpUser        String?
+  smtpPass        String?
+  mailFrom        String?
+  llmApiUrl       String?
+  llmApiKey       String?
+  llmModel        String?
+  features        Json?    // 开关
+  updatedAt       DateTime @updatedAt
+}
+
+model EmailToken {
+  id         String   @id @default(cuid())
+  userId     String
+  token      String   @unique
+  type       String   // verify | notify
+  expiresAt  DateTime
+  usedAt     DateTime?
+  createdAt  DateTime @default(now())
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+}
+
+model PasswordResetToken {
+  id         String   @id @default(cuid())
+  userId     String
+  token      String   @unique
+  expiresAt  DateTime
+  usedAt     DateTime?
+  createdAt  DateTime @default(now())
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+}
+
+model AiUsageLog {
+  id         String   @id @default(cuid())
+  userId     String
+  resumeId   String?
+  style      String?
+  inputLen   Int      @default(0)
+  outputLen  Int      @default(0)
+  tokensUsed Int      @default(0)
+  success    Boolean  @default(true)
+  errorMsg   String?
+  createdAt  DateTime @default(now())
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+}
