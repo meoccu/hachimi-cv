@@ -1,0 +1,47 @@
+{
+  "name": "resume-platform",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "prisma:gen": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:deploy": "prisma migrate deploy",
+    "seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.20.0",
+    "next": "^14.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "^3.23.0",
+    "nodemailer": "^6.9.14",
+    "puppeteer": "^23.0.0",
+    "sanitize-html": "^2.13.0",
+    "isomorphic-dompurify": "^2.16.0",
+    "ioredis": "^5.4.0",
+    "stripe": "^16.0.0",
+    "nanoid": "^5.0.7",
+    "ua-parser-js": "^1.0.38",
+    "@tiptap/react": "^2.6.0",
+    "@tiptap/starter-kit": "^2.6.0",
+    "@tiptap/extension-link": "^2.6.0",
+    "chart.js": "^4.4.0",
+    "pdfjs-dist": "^4.5.0",
+    "next-intl": "^3.17.0",
+    "tailwindcss": "^3.4.0"
+  },
+  "devDependencies": {
+    "prisma": "^5.20.0",
+    "typescript": "^5.5.0",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.3.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/sanitize-html": "^2.13.0",
+    "@types/nodemailer": "^6.4.15",
+    "tsx": "^4.16.0"
+  }
+}
